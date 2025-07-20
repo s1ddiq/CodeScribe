@@ -3,23 +3,19 @@ import { useEffect, useState } from "react";
 import { authClient } from "@/lib/auth-client";
 import { Button } from "@/components/ui/button";
 import { useRouter } from "next/navigation";
+import { useSidebar } from "@/components/ui/sidebar";
 
 export const HomeView = () => {
-  const [session, setSession] = useState<any>(null);
   const router = useRouter();
+  const { data: session } = authClient.useSession();
+  // BASE END
 
-  useEffect(() => {
-    authClient.getSession().then((res) => {
-      console.log("Session:", res.data);
-      setSession(res.data);
-    });
-  }, []);
+  const { toggleSidebar } = useSidebar();
 
   if (!session) return <div>Loading...</div>;
-
   return (
     <main>
-      <h1>Hello, {session?.user?.firstName}</h1>
+      <h1>Hello, {session.user.name}</h1>
       <Button
         onClick={() =>
           authClient.signOut(
@@ -37,6 +33,8 @@ export const HomeView = () => {
       >
         Sign out
       </Button>
+
+      <Button onClick={toggleSidebar}>toggle</Button>
     </main>
   );
 };
