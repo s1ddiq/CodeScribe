@@ -16,6 +16,7 @@ import {
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { redirect, useRouter } from "next/navigation";
+import Link from "next/link";
 
 const formSchema = z.object({
   email: z.email(),
@@ -122,6 +123,15 @@ const SignInView = () => {
                 </Button>
 
                 {/* TODO: Add `or continue with` */}
+                <Link
+                  href="/sign-up"
+                  className="w-full flex justify-center text-muted-foreground"
+                >
+                  Don&apos;t have an account?
+                  <span className="ml-2 text-primary underline underline-offset-2">
+                    Sign Up
+                  </span>
+                </Link>
               </form>
             </FormProvider>
           </div>
