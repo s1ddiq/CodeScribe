@@ -16,6 +16,7 @@ import {
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { redirect, useRouter } from "next/navigation";
+import Link from "next/link";
 
 const formSchema = z
   .object({
@@ -152,8 +153,8 @@ const SignUpView = () => {
                           <FormLabel>Confirm Password</FormLabel>
                           <FormControl>
                             <Input
-                              type="confirmPassword"
-                              placeholder="********"
+                              type="password"
+                              placeholder="Retype password"
                               {...field}
                             />
                           </FormControl>
@@ -167,7 +168,16 @@ const SignUpView = () => {
                   Sign up
                 </Button>
 
-                {/* TODO: Add `or continue with` */}
+                {/* TODO 1: Add `or continue with` */}
+                <Link
+                  href="/sign-in"
+                  className="w-full flex justify-center text-muted-foreground"
+                >
+                  Already have an account?
+                  <span className="ml-2 text-primary underline underline-offset-2">
+                    Sign Up
+                  </span>
+                </Link>
               </form>
             </FormProvider>
           </div>

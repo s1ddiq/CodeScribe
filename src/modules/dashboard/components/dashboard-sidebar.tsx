@@ -27,7 +27,7 @@ const DashboardSidebar = () => {
       <SidebarHeader className="px-4 py-3 border-b">
         <div className="flex gap-2 items-center">
           <Image src="/logo-black.svg" width={32} height={32} alt="Logo" />
-          <h2 className="text-lg font-semibold">Codescribe</h2>
+          <h2 className="text-lg font-semibold">CodeScribe</h2>
         </div>
       </SidebarHeader>
 
