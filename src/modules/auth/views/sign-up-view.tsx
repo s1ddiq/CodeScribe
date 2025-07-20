@@ -72,7 +72,7 @@ const SignUpView = () => {
   if (session) redirect("/");
 
   return (
-    <div className="flex h-screen | justify-center items-center">
+    <div className="flex h-screen | justify-center items-center p-4">
       <Card className="md:max-w-3xl max-w-2xl w-full p-0">
         <CardContent className="grid p-0 md:grid-cols-2">
           <div>
@@ -174,14 +174,15 @@ const SignUpView = () => {
 
           {/*           RIGHT              */}
 
-          <div className="flex justify-center items-center bg-radial from-primary to-blue-600 via-45% rounded-r-2xl">
+          <div className="flex flex-col justify-center items-center bg-radial from-primary to-blue-600 via-45% m-4 md:m-0 sm:rounded-r-xl rounded-xl md:p-0 p-2">
             <Image
               src="/logo-white.svg"
               width={64}
               height={64}
-              className="!w-[92px]"
+              className="md:!w-[92px] !w-[56px]"
               alt="Logo"
             />
+            <p className="text-xl font-bold text-white">CodeScribe</p>
           </div>
         </CardContent>
       </Card>

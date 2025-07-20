@@ -128,7 +128,7 @@ const SignInView = () => {
 
           {/*           RIGHT              */}
 
-          <div className="flex justify-center items-center bg-radial from-primary to-blue-600 via-45% md:rounded-r-2xl m-4 md:m-0 rounded-2xl md:p-0 p-2">
+          <div className="flex flex-col justify-center items-center bg-radial from-primary to-blue-600 via-45% m-4 md:m-0 sm:rounded-r-xl rounded-xl md:p-0 p-2">
             <Image
               src="/logo-white.svg"
               width={64}
@@ -136,6 +136,7 @@ const SignInView = () => {
               className="md:!w-[92px] !w-[56px]"
               alt="Logo"
             />
+            <p className="text-xl font-bold text-white">CodeScribe</p>
           </div>
         </CardContent>
       </Card>
