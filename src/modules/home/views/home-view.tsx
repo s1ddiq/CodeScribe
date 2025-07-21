@@ -1,13 +1,9 @@
 "use client";
 import { authClient } from "@/lib/auth-client";
-import { useRouter } from "next/navigation";
-import { useSidebar } from "@/components/ui/sidebar";
-import { Card, CardContent, CardFooter } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { estimateDuration } from "@/lib/utils";
+import { Card, CardContent } from "@/components/ui/card";
 import CourseCard from "../components/CourseCard";
-import { useEffect } from "react";
 import { useUserRole } from "@/hooks/use-user-role";
+import { Button } from "@/components/ui/button";
 
 interface HomeViewProps {
   courses: {
@@ -24,8 +20,7 @@ interface HomeViewProps {
 
 export const HomeView = ({ courses }: HomeViewProps) => {
   const { data: session } = authClient.useSession();
-  const { role, loading, error } = useUserRole();
-  console.log(role);
+  const { role, isAdmin } = useUserRole();
 
   if (!session || !courses) return <div>Loading...</div>;
 
@@ -35,8 +30,11 @@ export const HomeView = ({ courses }: HomeViewProps) => {
       <div className="space-y-4">
         <Card className="w-full rounded-xl p-4 shadow-none">
           <CardContent className="p-0">
-            <p className="font-medium text-xl text-foreground">
-              Welcome back, {session?.user?.name}
+            <p className="font-medium text-xl text-foreground capitalize">
+              Welcome back,{" "}
+              <span className={`${isAdmin && "text-primary"}`}>
+                {session?.user?.name}
+              </span>
             </p>
             <p className="text-muted-foreground ">
               Continue where you left off or explore something new.
@@ -44,6 +42,11 @@ export const HomeView = ({ courses }: HomeViewProps) => {
           </CardContent>
         </Card>
 
+        {isAdmin && (
+          <section className="space-y-2">
+            <Button>Add Course</Button>
+          </section>
+        )}
         <section className="space-y-2">
           <h1 className="text-2xl font-semibold">Browse Courses</h1>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
