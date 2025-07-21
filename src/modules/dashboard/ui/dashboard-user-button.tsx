@@ -92,7 +92,9 @@ const DashboardUserButton = () => {
 
           <div className="flex gap-2 items-center justify-between w-full cursor-pointer">
             <span>
-              <p className="truncate font-medium">{session?.user.name}</p>
+              <p className="truncate font-medium capitalize">
+                {session?.user.name}
+              </p>
               <p className=" text-xs font-medium">{session?.user?.email}</p>
             </span>
 

@@ -1,3 +1,4 @@
+import { randomUUID } from "crypto";
 import {
   pgTable,
   text,
@@ -80,7 +81,9 @@ export const courses = pgTable("courses", {
 });
 
 export const lessons = pgTable("lessons", {
-  id: text("id").primaryKey(),
+  id: text("id")
+    .primaryKey()
+    .$defaultFn(() => crypto.randomUUID()),
   courseId: text("course_id")
     .notNull()
     .references(() => courses.id, { onDelete: "cascade" }),

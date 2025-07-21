@@ -1,14 +1,18 @@
 import { getLessonsByCourseSlug } from "@/db/queries/actions";
 import LessonView from "@/modules/courses/views/LessonView";
 
-const Page = async ({ params }: { params: { slug: string } }) => {
-  const data = await getLessonsByCourseSlug(params.slug);
+export default async function Page({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
+  const { slug } = await params;
 
-  if (!data) {
-    return <div className="p-6">Course not found</div>;
+  const data = await getLessonsByCourseSlug(slug);
+
+  if (!data || !data.course || !data.lessons?.length) {
+    return <div className="p-6">Course not found or no lessons available</div>;
   }
 
-  return <LessonView course={data.course} lessons={data.lessons} />;
-};
-
-export default Page;
+  return <LessonView course={data.course ?? []} lessons={data.lessons} />;
+}
