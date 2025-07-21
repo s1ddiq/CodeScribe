@@ -78,7 +78,8 @@ export default function Page() {
         <Card className="p-4">
           <CardContent className="p-0">
             <div className="flex flex-col gap-4">
-              <h2>Preview</h2>
+              <h2 className="text-xs text-gray-500">Preview</h2>
+              <h2 className="font-medium text-2xl text-black">{title}</h2>
               <MarkdownRender content={content} />
             </div>
           </CardContent>
