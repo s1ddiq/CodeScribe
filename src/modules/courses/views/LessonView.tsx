@@ -1,7 +1,9 @@
 "use client";
+import MarkdownRender from "@/components/markdown-render";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { useState } from "react";
+import ReactMarkdown from "react-markdown";
 
 export default function LessonView({
   course,
@@ -22,29 +24,31 @@ export default function LessonView({
 
   const currentLesson = lessons[currentIndex];
   return (
-    <div className="p-4">
+    <div className="p-2">
       {/* LESSON CONTAINER */}
-      <Button onClick={prevLesson} disabled={currentIndex === 0}>
-        <ArrowLeft />
-        Back
-      </Button>
+
+      <div className="flex justify-between w-full items-center">
+        <Button onClick={prevLesson} disabled={currentIndex === 0}>
+          <ArrowLeft />
+          Back
+        </Button>
+        <Button
+          onClick={nextLesson}
+          disabled={currentIndex === lessons.length - 1}
+        >
+          Next <ArrowRight />
+        </Button>
+      </div>
       <div className="p-4 min-h-screen flex flex-col">
         <h1 className="text-xs font-light text-muted-foreground">
           {course.title}
         </h1>
         <div className="p-3 rounded flex-1">
           <h2 className="text-xl font-semibold">{currentLesson.title}</h2>
-          <div className="mt-2">{currentLesson.content}</div>
+          <MarkdownRender content={currentLesson.content} />
         </div>
 
-        <div className="flex justify-between mt-auto pt-4">
-          <Button
-            onClick={nextLesson}
-            disabled={currentIndex === lessons.length - 1}
-          >
-            Next <ArrowRight />
-          </Button>
-        </div>
+        <div className="flex justify-between mt-auto pt-4"></div>
       </div>
     </div>
   );

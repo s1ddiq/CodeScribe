@@ -4,6 +4,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import CourseCard from "../components/CourseCard";
 import { useUserRole } from "@/hooks/use-user-role";
 import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
 interface HomeViewProps {
   courses: {
@@ -44,7 +45,9 @@ export const HomeView = ({ courses }: HomeViewProps) => {
 
         {isAdmin && (
           <section className="space-y-2">
-            <Button>Add Course</Button>
+            <Link href="/admin">
+              <Button>Add Course</Button>
+            </Link>
           </section>
         )}
         <section className="space-y-2">
