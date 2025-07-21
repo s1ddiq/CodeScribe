@@ -40,5 +40,7 @@ export function useUserRole() {
     };
   }, []);
 
-  return { role, loading, error };
+  const isAdmin = role === "admin" ? true : false;
+
+  return { role, loading, error, isAdmin };
 }
