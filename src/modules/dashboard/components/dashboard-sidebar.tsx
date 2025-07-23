@@ -15,8 +15,7 @@ import Link from "next/link";
 import DashboardUserButton from "../ui/dashboard-user-button";
 
 const items = [
-  { title: "Home", url: "/", icon: Home },
-  { title: "My Learning", url: "/my-learning", icon: GraduationCap },
+  { title: "My Learning", url: "/", icon: GraduationCap },
   { title: "Profile", url: "/profile", icon: User },
   { title: "Settings", url: "/settings", icon: Settings },
 ];
@@ -26,8 +25,8 @@ const DashboardSidebar = () => {
     <Sidebar className="flex flex-col w-64 h-screen border-r bg-background">
       <SidebarHeader className="px-4 py-3 border-b">
         <div className="flex gap-2 items-center">
-          <Image src="/logo-black.svg" width={32} height={32} alt="Logo" />
-          <h2 className="text-lg font-semibold">CodeScribe</h2>
+          <Image src="/logo-white.svg" width={28} height={28} alt="Logo" />
+          <h2 className="text-lg font-bold tracking-wide">CodeScribe</h2>
         </div>
       </SidebarHeader>
 

@@ -29,7 +29,7 @@ const Navbar = () => {
   }
 
   return (
-    <div className="h-[57px] bg-sidebar-primary-foreground border-b border-sidebar-border p-2 flex items-center">
+    <div className="h-[53px] bg-sidebar-primary-foreground border-b border-sidebar-border p-2 flex items-center">
       {/* Desktop header content */}
       {open ? (
         <SidebarCloseIcon onClick={toggleSidebar} />
